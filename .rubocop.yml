@@ -1,0 +1,9 @@
+AllCops:
+  Include:
+    - '**/Berksfile'
+    - '**/Cheffile'
+  Exclude:
+    - 'metadata.rb'
+
+LineLength:
+  Max: 120
