@@ -4,6 +4,8 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
+package 'virtualenv'
+
 user 'pelican' do
   comment 'pelican blog user'
   system true
