@@ -4,7 +4,7 @@ maintainer_email 'jldugger@gmail.com'
 license 'MIT'
 description 'Installs/Configures pwnguin.net'
 long_description 'Installs/Configures pwnguin.net'
-version '0.1.0'
+version '0.1.1'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link
