@@ -4,15 +4,10 @@ maintainer_email 'jldugger@gmail.com'
 license 'MIT'
 description 'Installs/Configures pwnguin.net'
 long_description 'Installs/Configures pwnguin.net'
-version '0.1.1'
+version '0.2.0'
 
-# If you upload to Supermarket you should set this so your cookbook
-# gets a `View Issues` link
-# issues_url 'https://github.com/<insert_org_here>/pwnguin/issues' if respond_to?(:issues_url)
-
-# If you upload to Supermarket you should set this so your cookbook
-# gets a `View Source` link
-# source_url 'https://github.com/<insert_org_here>/pwnguin' if respond_to?(:source_url)
+issues_url 'https://github.com/jldugger/pwnguin/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/jldugger/pwnguin' if respond_to?(:source_url)
 
 depends 'apache2'
 depends 'chef-client'
