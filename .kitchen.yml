@@ -23,3 +23,7 @@ suites:
       inspec_tests:
         - test/recipes
     attributes:
+  - name: database
+    run_list:
+      - recipe[pwnguin::database]
+    attributes:
