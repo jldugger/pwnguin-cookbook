@@ -2,6 +2,10 @@
 driver:
   name: vagrant
 
+driver_config:
+  network:
+  - ["forwarded_port", {guest: 80, host: 8080}]
+
 provisioner:
   name: chef_zero
   # You may wish to disable always updating cookbooks in CI or other testing environments.
@@ -26,4 +30,9 @@ suites:
   - name: database
     run_list:
       - recipe[pwnguin::database]
+    attributes:
+
+  - name: photolog
+    run_list:
+      - recipe[pwnguin::photologue]
     attributes:
