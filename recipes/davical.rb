@@ -8,6 +8,7 @@ include_recipe 'apache2::default'
 
 package 'davical'
 package 'libapache2-mod-php'
+package 'pwauth'
 
 web_app 'calendar.pwnguin.net' do
   server_name 'calendar.pwnguin.net'
