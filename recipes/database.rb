@@ -22,6 +22,27 @@ postgresql_connection_info = {
   :password => node['postgresql']['password']['postgres']
 }
 
+postgresql_database_user 'jldugger' do
+  connection postgresql_connection_info
+end
+
+
+postgresql_database 'gnucash' do
+  connection postgresql_connection_info
+  owner 'jldugger'
+end
+
+postgresql_database_user 'jldugger' do
+  connection postgresql_connection_info
+  database_name 'gnucash'
+  schema_name 'public'
+  tables [:all]
+  sequences [:all]
+  functions [:all]
+  privileges [:all]
+  action [:grant, :grant_schema, :grant_table, :grant_sequence, :grant_function]
+end
+
 postgresql_database_user 'davical_app' do
   connection postgresql_connection_info
 end
@@ -50,3 +71,5 @@ postgresql_database 'davical' do
 end
 
 node.default['postgresql']['pg_hba'] = [{ :type => 'local', :db => 'davical', :user => 'davical_app', :addr => nil, :method => 'trust'}] + node.default['postgresql']['pg_hba']
+node.default['postgresql']['pg_hba'] = [{ :type => 'local', :db => 'gnucash', :user => 'jldugger', :addr => nil, :method => 'ident'}] + node.default['postgresql']['pg_hba']
+
