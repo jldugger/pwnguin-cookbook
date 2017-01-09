@@ -27,12 +27,13 @@ suites:
       inspec_tests:
         - test/recipes
     attributes:
+  - name: davical
+    run_list:
+      - recipe[pwnguin::davical]
+      - recipe[pwnguin::database]
   - name: database
     run_list:
       - recipe[pwnguin::database]
-    attributes:
-
   - name: photolog
     run_list:
       - recipe[pwnguin::photologue]
-    attributes:

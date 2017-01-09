@@ -12,6 +12,7 @@ source_url 'https://github.com/jldugger/pwnguin' if respond_to?(:source_url)
 depends 'apache2'
 depends 'chef-client'
 depends 'postgresql'
+depends 'database'
 depends 'application_python'
 depends 'application_git'
 depends 'build-essential'
