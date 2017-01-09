@@ -6,6 +6,8 @@
 
 include_recipe 'pwnguin::default'
 
+node.default['apache']['mpm'] = 'prefork'
+
 # set up web server
 include_recipe 'apache2'
 

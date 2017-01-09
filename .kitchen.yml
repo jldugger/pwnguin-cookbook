@@ -23,6 +23,8 @@ suites:
   - name: default
     run_list:
       - recipe[pwnguin::server]
+      - recipe[pwnguin::database]
+      - recipe[pwnguin::davical]
     verifier:
       inspec_tests:
         - test/recipes
