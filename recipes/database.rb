@@ -71,5 +71,5 @@ postgresql_database 'davical' do
 end
 
 node.default['postgresql']['pg_hba'] = [{ :type => 'local', :db => 'davical', :user => 'davical_app', :addr => nil, :method => 'trust'}] + node.default['postgresql']['pg_hba']
-node.default['postgresql']['pg_hba'] = [{ :type => 'local', :db => 'gnucash', :user => 'jldugger', :addr => nil, :method => 'ident'}] + node.default['postgresql']['pg_hba']
+node.default['postgresql']['pg_hba'] = [{ :type => 'local', :db => 'gnucash', :user => 'jldugger', :addr => nil, :method => 'md5'}] + node.default['postgresql']['pg_hba']
 
