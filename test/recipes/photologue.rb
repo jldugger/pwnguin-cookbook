@@ -14,5 +14,5 @@ describe command('curl localhost -H "Host: albums.pwnguin.net"') do
 end
 
 describe command('curl localhost/admin/login/?next=/admin/ -H "albums.pwnguin.net"') do
-  its(:stdout) {should match /Django/}
+  its(:stdout) {should match /administration/}
 end
