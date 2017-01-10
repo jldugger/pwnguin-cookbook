@@ -9,5 +9,6 @@ describe port(80) do
   it { should be_listening }
 end
 
-describe command('curl localhost -H 'Host: calendar.pwnguin.net') do
+describe command('curl localhost -H "Host: calendar.pwnguin.net"') do
   its(:stdout) {should match /DAViCal/}
+end
