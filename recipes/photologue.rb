@@ -22,9 +22,8 @@ application '/var/www/albums.pwnguin.net/django-photologue' do
   virtualenv
   pip_requirements
   django do
-    #database 'sqlite:///db.sqlite3'
     database 'postgres://photologue:password@localhost/photologue'
-    allowed_hosts ['*']
+    allowed_hosts %w(* u'pwnguin.net' u'albums.pwnguin.net')
     debug true
     migrate true
   end
@@ -36,7 +35,6 @@ end
 
 web_app 'albums.pwnguin.net' do
   server_name 'albums.pwnguin.net'
-  server_aliases [node['fqdn'], 'localhost']
   docroot '/var/www/albums.pwnguin.net/django-photologue'
   wsgi_name 'photologue'
   template 'wsgi_app.conf.erb'

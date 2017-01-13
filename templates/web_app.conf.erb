@@ -49,6 +49,10 @@ NameVirtualHost *:<%= @params[:server_port] %>
   RewriteLog <%= node['apache']['log_dir'] %>/<%= @application_name %>-rewrite.log
   RewriteLogLevel 0
   <%- end -%>
+  <Location "/albums/">
+    ProxyPass "http://albums.pwnguin.net/"
+    Require all granted
+  </Location>
 
   ErrorLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-error.log
   CustomLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-access.log combined
