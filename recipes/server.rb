@@ -7,6 +7,10 @@
 include_recipe 'pwnguin::default'
 
 node.default['apache']['mpm'] = 'prefork'
+node.default['apache']['prefork']['startservers'] = 2
+node.default['apache']['prefork']['minspareservers'] = 2
+node.default['apache']['prefork']['maxspareservers'] = 4
+node.default['apache']['prefork']['serverlimit'] = 16
 
 # set up web server
 include_recipe 'apache2'
