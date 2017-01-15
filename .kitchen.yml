@@ -5,6 +5,7 @@ driver:
 driver_config:
   network:
   - ["forwarded_port", {guest: 80, host: 8080}]
+  - ["forwarded_port", {guest: 443, host: 8443}]
 
 provisioner:
   name: chef_zero
