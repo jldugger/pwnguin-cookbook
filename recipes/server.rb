@@ -22,7 +22,7 @@ include_recipe 'apache2::mod_ssl'
 # ssl settings
 
 include_recipe 'acme'
-node.set['acme']['contact'] = ['mailto:meh@pwnguin.net']
+node.default['acme']['contact'] = ['mailto:meh@pwnguin.net']
 site = 'pwnguin.net'
 sans = ["www.#{site}", "albums.#{site}", "calendar.#{site}"]
 
