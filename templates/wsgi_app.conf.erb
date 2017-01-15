@@ -46,7 +46,7 @@
     processes=2 threads=25 \
     python-path=<%= @params[:docroot] %>:<%= @params[:docroot] %>/.virtualenv/lib/python2.7/site-packages
 
-  WSGIScriptAlias / <%= @params[:docroot] %>/album_project/wsgi.py \
+  WSGIScriptAlias /albums <%= @params[:docroot] %>/album_project/wsgi.py \
     process-group=<%= @params[:wsgi_name] %> application-group=%{GLOBAL}
 
   RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
