@@ -6,7 +6,6 @@
 
 include_recipe 'pwnguin::default'
 
-
 # apache tuning
 node.default['apache']['mpm'] = 'prefork'
 node.default['apache']['prefork']['startservers'] = 2
@@ -24,7 +23,6 @@ include_recipe 'apache2::mod_ssl'
 include_recipe 'acme'
 node.default['acme']['contact'] = ['mailto:meh@pwnguin.net']
 site = 'pwnguin.net'
-sans = ["www.#{site}", "albums.#{site}", "calendar.#{site}"]
 
 acme_selfsigned site do
   crt     "/etc/apache2/ssl/#{site}.crt"
