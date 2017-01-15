@@ -20,4 +20,4 @@ end
 
 cookbook_file '/etc/davical/config.php' do
   source 'config.php'
-end 
+end

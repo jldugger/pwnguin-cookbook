@@ -13,17 +13,15 @@ memory = node['memory']['total'].split('kB')[0].to_i
 node.default['postgresql']['config_pgtune']['total_memory'] = (memory / 2).floor.to_s + 'kB'
 
 postgresql_connection_info = {
-  :host     => 'localhost',
-  :port     => node['postgresql']['config']['port'],
-  :username => 'postgres',
-  :password => node['postgresql']['password']['postgres']
+  host: 'localhost',
+  port: node['postgresql']['config']['port'],
+  username: 'postgres',
+  password: node['postgresql']['password']['postgres']
 }
-
 
 postgresql_database_user 'photologue' do
   connection postgresql_connection_info
 end
-
 
 postgresql_database 'photologue' do
   connection postgresql_connection_info
@@ -46,7 +44,6 @@ postgresql_database_user 'jldugger' do
   connection postgresql_connection_info
 end
 
-
 postgresql_database 'gnucash' do
   connection postgresql_connection_info
   owner 'jldugger'
@@ -66,7 +63,6 @@ end
 postgresql_database_user 'davical_app' do
   connection postgresql_connection_info
 end
-
 
 postgresql_database 'davical' do
   connection postgresql_connection_info
@@ -89,11 +85,10 @@ postgresql_database 'davical' do
   owner 'davical_app'
 end
 
-
-databases =[
-     { :type => 'local', :db => 'davical', :user => 'davical_app', :addr => nil, :method => 'trust'},
-     { :type => 'local', :db => 'photologue', :user => 'photologue', :addr => nil, :method => 'trust'},
-     { :type => 'local', :db => 'gnucash', :user => 'jldugger', :addr => nil, :method => 'md5'}
+databases = [
+  { type: 'local', db: 'davical', user: 'davical_app', addr: nil, method: 'trust' },
+  { type: 'local', db: 'photologue', user: 'photologue', addr: nil, method: 'trust' },
+  { type: 'local', db: 'gnucash', user: 'jldugger', addr: nil, method: 'md5' }
 ]
 
 node.default['postgresql']['pg_hba'] = databases + node.default['postgresql']['pg_hba']
@@ -103,13 +98,6 @@ logrotate_app 'postgresql-backups' do
   frequency 'daily'
   rotate 30
   create '640 postgres postgres'
-  options [
-    'missingok',
-    'delaycopmress',
-    'ifempty',
-    'compress',
-    'dateext',
-  ]
+  options %w(missingok delaycopmress ifempty compress dateext)
   postrotate '/usr/bin/sudo -u postgres /usr/bin/pg_dumpall --clean > /var/backups/postgresql/postgresql-dump.sql'
 end
-

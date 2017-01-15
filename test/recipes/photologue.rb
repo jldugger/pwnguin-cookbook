@@ -10,9 +10,9 @@ describe port(80) do
 end
 
 describe command('curl localhost -H "Host: albums.pwnguin.net"') do
-  its(:stdout) {should match /photologue/}
+  its(:stdout) { should match(/photologue/) }
 end
 
 describe command('curl localhost/admin/login/?next=/admin/ -H "albums.pwnguin.net"') do
-  its(:stdout) {should match /administration/}
+  its(:stdout) { should match(/administration/) }
 end

@@ -10,5 +10,5 @@ describe port(80) do
 end
 
 describe command('curl localhost -H "Host: calendar.pwnguin.net"') do
-  its(:stdout) {should match /DAViCal/}
+  its(:stdout) { should match(/DAViCal/) }
 end
