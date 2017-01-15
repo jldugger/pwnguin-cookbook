@@ -36,11 +36,18 @@
     </Files>
   </Directory>
 
+
+  <Directory /var/www/albums.pwnguin.net/django-photologue/public/media>
+       Require all granted
+  </Directory>
+
+  Alias /albums/media/ /var/www/albums.pwnguin.net/django-photologue/public/media/
+
   <Directory /var/www/albums.pwnguin.net/django-photologue/public/static>
     Require all granted
   </Directory>
 
-  Alias /static/ /var/www/albums.pwnguin.net/django-photologue/public/static/
+  Alias /albums/static/ /var/www/albums.pwnguin.net/django-photologue/public/static/
 
   WSGIDaemonProcess <%= @params[:wsgi_name] %> user=www-data group=www-data \
     processes=2 threads=25 \
