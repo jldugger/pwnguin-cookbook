@@ -12,3 +12,11 @@ end
 describe command('curl http://localhost/albums/ -H "Host: pwnguin.net"') do
   its(:stdout) {should match /A collection of my personal photos/}
 end
+
+describe port(443) do
+  it { should be_listening}
+end
+
+describe command('curl --insecure https://localhost/albums/ -H "Host: pwnguin.net"') do
+  its(:stdout) {should match /A collection of my personal photos/}
+end
