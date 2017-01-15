@@ -12,9 +12,6 @@ node.default['postgresql']['config_pgtune']['db_type'] = 'web'
 memory = node['memory']['total'].split('kB')[0].to_i
 node.default['postgresql']['config_pgtune']['total_memory'] = (memory / 2).floor.to_s + 'kB'
 
-# TODO: use this
-# include_recipe 'postgresql::config_pgtune'
-
 postgresql_connection_info = {
   :host     => 'localhost',
   :port     => node['postgresql']['config']['port'],
@@ -100,4 +97,19 @@ databases =[
 ]
 
 node.default['postgresql']['pg_hba'] = databases + node.default['postgresql']['pg_hba']
+
+logrotate_app 'postgresql-backups' do
+  path '/var/backups/postgresql/postgresql-dump.sql'
+  frequency 'daily'
+  rotate 30
+  create '640 postgres postgres'
+  options [
+    'missingok',
+    'delaycopmress',
+    'ifempty',
+    'compress',
+    'dateext',
+  ]
+  postrotate '/usr/bin/sudo -u postgres /usr/bin/pg_dumpall --clean > /var/backups/postgresql/postgresql-dump.sql'
+end
 

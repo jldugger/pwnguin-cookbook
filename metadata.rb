@@ -4,7 +4,7 @@ maintainer_email 'jldugger@gmail.com'
 license 'MIT'
 description 'Installs/Configures pwnguin.net'
 long_description 'Installs/Configures pwnguin.net'
-version '0.9.0'
+version '0.10.0'
 
 issues_url 'https://github.com/jldugger/pwnguin/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/jldugger/pwnguin' if respond_to?(:source_url)
@@ -17,3 +17,4 @@ depends 'database'
 depends 'application_python'
 depends 'application_git'
 depends 'build-essential'
+depends 'logrotate'
