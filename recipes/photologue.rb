@@ -26,6 +26,8 @@ application '/var/www/albums.pwnguin.net/django-photologue' do
     allowed_hosts %w(* u'pwnguin.net' u'albums.pwnguin.net')
     debug true
     migrate true
+    local_settings_source 'local_settings.py.erb'
+    local_settings_variables node['pwnguin']['photologue']
   end
 end
 
