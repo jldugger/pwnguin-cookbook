@@ -4,7 +4,15 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-include_recipe 'chef-client'
+
+node.default['chef_client']['cron']['hour'] = '*'
+node.default['chef_client']['cron']['minute'] = '*/30'
+node.default['chef_client']['cron']['mailto'] = 'jldugger+chef@gmail.com'
+node.default['chef_client']['cron']['use_cron_d'] = true
+node.default['chef_client']['cron']['log_file'] = '/var/log/chef/client.log'
+node.default['chef_client']['init_style'] = 'none'
+
+include_recipe 'chef-client::cron'
 
 %w(htop screen git ack-grep colordiff fail2ban httping irssi ldapvi moreutils
    mtr-tiny myrepos pastebinit pwgen pv sslscan traceroute vim whois).each do |pkg|
