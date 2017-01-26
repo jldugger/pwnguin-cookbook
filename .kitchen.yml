@@ -23,6 +23,9 @@ platforms:
 suites:
   - name: default
     run_list:
+      - recipe[pwnguin::default]
+  - name: full-server
+    run_list:
       - recipe[pwnguin::server]
       - recipe[pwnguin::database]
       - recipe[pwnguin::davical]
