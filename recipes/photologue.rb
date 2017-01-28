@@ -23,7 +23,7 @@ application '/var/www/albums.pwnguin.net/django-photologue' do
   pip_requirements
   django do
     database 'postgres://photologue:password@localhost/photologue'
-    allowed_hosts %w(* u'pwnguin.net' u'albums.pwnguin.net')
+    allowed_hosts %w(* u'pwnguin.net' u'albums.pwnguin.net' u'www.pwnguin.net')
     debug true
     migrate true
     local_settings_source 'local_settings.py.erb'
