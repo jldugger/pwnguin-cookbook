@@ -29,6 +29,7 @@ acme_certificate site do
   key     "/etc/apache2/ssl/#{site}.key"
   chain   "/etc/apache2/ssl/#{site}.pem"
   wwwroot '/var/www/www.pwnguin.net'
+  altnames ['www.pwnguin.net']
 end
 
 # set up web server
