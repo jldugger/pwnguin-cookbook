@@ -28,6 +28,7 @@ acme_certificate site do
   crt     "/etc/apache2/ssl/#{site}.crt"
   key     "/etc/apache2/ssl/#{site}.key"
   chain   "/etc/apache2/ssl/#{site}.pem"
+  wwwroot '/var/www/www.pwnguin.net'
 end
 
 # set up web server
