@@ -24,7 +24,7 @@ include_recipe 'acme'
 node.default['acme']['contact'] = ['mailto:meh@pwnguin.net']
 site = 'pwnguin.net'
 
-acme_selfsigned site do
+acme_certificate site do
   crt     "/etc/apache2/ssl/#{site}.crt"
   key     "/etc/apache2/ssl/#{site}.key"
   chain   "/etc/apache2/ssl/#{site}.pem"

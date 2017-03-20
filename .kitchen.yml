@@ -24,6 +24,9 @@ suites:
   - name: default
     run_list:
       - recipe[pwnguin::default]
+    verifier:
+      inspec_tests:
+      - test/recipes/default_test.rb
   - name: full-server
     run_list:
       - recipe[pwnguin::server]
