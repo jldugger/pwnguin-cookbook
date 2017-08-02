@@ -15,25 +15,8 @@ node.default['chef_client']['init_style'] = 'none'
 include_recipe 'chef-client::cron'
 include_recipe 'chef-client::delete_validation'
 
-%w(htop screen git ack-grep colordiff fail2ban httping irssi ldapvi moreutils
-   mtr-tiny myrepos pastebinit pwgen pv sslscan traceroute vim whois).each do |pkg|
+%w(htop httping mtr-tiny sslscan traceroute whois).each do |pkg|
   package pkg do
     action :upgrade
   end
-end
-
-user 'jldugger' do
-  home '/home/jldugger'
-  shell '/bin/bash'
-  manage_home true
-end
-
-group 'sudo' do
-  action :modify
-  members ['jldugger']
-  append true
-end
-
-user 'ubuntu' do
-  action :remove
 end
