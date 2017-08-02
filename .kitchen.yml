@@ -50,3 +50,6 @@ suites:
     verifier:
       inspec_tests:
         - test/recipes/photologue.rb
+  - name: shell
+    run_list:
+      - recipe[pwnguin::shell]
