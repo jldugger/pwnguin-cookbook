@@ -57,7 +57,7 @@ postgresql_database_user 'jldugger' do
   sequences [:all]
   functions [:all]
   privileges [:all]
-  action %i[grant,grant_schema grant_table grant_sequence grant_function]
+  action %i[grant grant_schema grant_table grant_sequence grant_function]
 end
 
 postgresql_database_user 'davical_app' do
