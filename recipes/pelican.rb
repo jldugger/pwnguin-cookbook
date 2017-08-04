@@ -39,6 +39,6 @@ end
 web_app 'www.pwnguin.net' do
   server_ports %w[80 443]
   server_name 'www.pwnguin.net'
-  server_aliases [node['fqdn'], 'pwnguin.net', 'aws.pwnguin.net']
+  server_aliases [node['fqdn'], 'pwnguin.net', 'aws.pwnguin.net', 'gcp1.pwnguin.net']
   docroot '/var/www/www.pwnguin.net'
 end
