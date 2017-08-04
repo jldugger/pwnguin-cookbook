@@ -37,7 +37,7 @@ directory '/var/www/www.pwnguin.net' do
 end
 
 web_app 'www.pwnguin.net' do
-  server_ports %w(80 443)
+  server_ports %w[80 443]
   server_name 'www.pwnguin.net'
   server_aliases [node['fqdn'], 'pwnguin.net', 'aws.pwnguin.net']
   docroot '/var/www/www.pwnguin.net'

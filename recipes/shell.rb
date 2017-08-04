@@ -4,9 +4,8 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
-%w(screen git ack-grep colordiff fail2ban irssi moreutils
-   myrepos pastebinit pwgen pv vim).each do |pkg|
+%w[screen git ack-grep colordiff fail2ban irssi moreutil
+   myrepos pastebinit pwgen pv vim].each do |pkg|
   package pkg do
     action :upgrade
   end

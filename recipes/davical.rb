@@ -14,7 +14,7 @@ web_app 'calendar.pwnguin.net' do
   server_name 'calendar.pwnguin.net'
   template 'web_app.conf.erb'
   docroot '/usr/share/davical/htdocs'
-  directory_index %w(index.php index.html)
+  directory_index %w[index.php index.html]
   aliases ['/images/ /usr/share/davical/htdocs/images/']
 end
 

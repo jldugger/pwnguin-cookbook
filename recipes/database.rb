@@ -37,7 +37,7 @@ postgresql_database_user 'photologue' do
   sequences [:all]
   functions [:all]
   privileges [:all]
-  action [:grant, :grant_schema, :grant_table, :grant_sequence, :grant_function]
+  action %i[grant grant_schema grant_table grant_sequence grant_function]
 end
 
 postgresql_database_user 'jldugger' do
@@ -57,7 +57,7 @@ postgresql_database_user 'jldugger' do
   sequences [:all]
   functions [:all]
   privileges [:all]
-  action [:grant, :grant_schema, :grant_table, :grant_sequence, :grant_function]
+  action %i[grant,grant_schema grant_table grant_sequence grant_function]
 end
 
 postgresql_database_user 'davical_app' do
@@ -77,7 +77,7 @@ postgresql_database_user 'davical_app' do
   sequences [:all]
   functions [:all]
   privileges [:all]
-  action [:grant, :grant_schema, :grant_table, :grant_sequence, :grant_function]
+  action %i[grant grant_schema grant_table grant_sequence grant_function]
 end
 
 postgresql_database 'davical' do
@@ -98,6 +98,6 @@ logrotate_app 'postgresql-backups' do
   frequency 'daily'
   rotate 30
   create '640 postgres postgres'
-  options %w(missingok delaycopmress ifempty compress dateext)
+  options %w[missingok delaycopmress ifempty compress dateext]
   postrotate '/usr/bin/sudo -u postgres /usr/bin/pg_dumpall --clean > /var/backups/postgresql/postgresql-dump.sql'
 end
