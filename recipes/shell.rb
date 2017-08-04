@@ -17,6 +17,13 @@ user 'jldugger' do
   manage_home true
 end
 
+cron 'irc' do
+  command '/usr/bin/screen -dmS IRC /usr/bin/irssi'
+  time :reboot
+  home '/home/jldugger'
+  user 'jldugger'
+end
+
 group 'sudo' do
   action :modify
   members ['jldugger']
