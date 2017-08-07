@@ -4,6 +4,8 @@
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
 
+node.default['apache']['mpm'] = 'prefork'
+
 include_recipe 'apache2::default'
 
 package 'davical'
