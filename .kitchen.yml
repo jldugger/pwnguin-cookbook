@@ -53,3 +53,6 @@ suites:
   - name: shell
     run_list:
       - recipe[pwnguin::shell]
+  - name: jobwatch
+    run_list:
+      - recipe[pwnguin::jobwatch]
