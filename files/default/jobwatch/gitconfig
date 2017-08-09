@@ -1,0 +1,7 @@
+[user]
+        name = Justin Dugger
+        email = 'jldugger@gmail.com'
+[push]
+        # push the current branch to update a branch with the same name on the receiving end
+        default = current
+
