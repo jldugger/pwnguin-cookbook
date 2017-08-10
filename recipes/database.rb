@@ -93,6 +93,11 @@ databases = [
 
 node.default['postgresql']['pg_hba'] = databases + node.default['postgresql']['pg_hba']
 
+directory '/var/backups/postgresql' do
+  owner 'postgres'
+  mode '600'
+end
+
 logrotate_app 'postgresql-backups' do
   path '/var/backups/postgresql/postgresql-dump.sql'
   frequency 'daily'
