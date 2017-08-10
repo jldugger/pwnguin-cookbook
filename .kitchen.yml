@@ -43,6 +43,9 @@ suites:
   - name: database
     run_list:
       - recipe[pwnguin::database]
+    verifier:
+      inspec_tests:
+      - test/recipes/database.rb
   - name: photologue
     run_list:
       - recipe[pwnguin::database]

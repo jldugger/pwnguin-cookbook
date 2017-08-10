@@ -103,6 +103,11 @@ logrotate_app 'postgresql-backups' do
   frequency 'daily'
   rotate 30
   create '640 postgres postgres'
-  options %w[missingok delaycopmress ifempty compress dateext]
+  options %w[missingok delaycompress ifempty compress dateext]
   postrotate '/usr/bin/sudo -u postgres /usr/bin/pg_dumpall --clean > /var/backups/postgresql/postgresql-dump.sql'
+end
+
+file '/var/backups/postgresql/postgresql-dump.sql' do
+  owner 'postgres'
+  action :create_if_missing
 end
