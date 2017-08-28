@@ -41,6 +41,7 @@ suites:
       - recipe[pwnguin::davical]
       - recipe[pwnguin::database]
   - name: database
+    data_bags_path: "test/integration/data_bags"
     run_list:
       - recipe[pwnguin::database]
     verifier:

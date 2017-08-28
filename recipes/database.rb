@@ -95,7 +95,8 @@ node.default['postgresql']['pg_hba'] = databases + node.default['postgresql']['p
 
 directory '/var/backups/postgresql' do
   owner 'postgres'
-  mode '600'
+  group 'postgres'
+  mode '650'
 end
 
 logrotate_app 'postgresql-backups' do
@@ -110,4 +111,8 @@ end
 file '/var/backups/postgresql/postgresql-dump.sql' do
   owner 'postgres'
   action :create_if_missing
+end
+
+users_manage 'postgres' do
+  data_bag 'backup_users'
 end
