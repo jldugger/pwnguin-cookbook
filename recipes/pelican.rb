@@ -21,6 +21,7 @@ end
 git '/home/pelican/blog' do
   repository 'https://github.com/jldugger/blog.git'
   revision 'master'
+  checkout_branch 'false'
   user 'pelican'
   group 'pelican'
   action :checkout
