@@ -29,5 +29,6 @@ end
 
 desc 'Run all tests'
 task test: [:berks_update, :style, :lint]
+task travis: [:style, :lint, :unit]
 
 task default: :test
