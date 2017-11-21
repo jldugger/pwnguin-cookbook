@@ -27,7 +27,13 @@ task :berks_update do
   run_command('berks update')
 end
 
+task :unit do
+  run_command('rm -f Berksfile.lock')
+  run_command('rspec --format documentation --color')
+end
+
 desc 'Run all tests'
 task test: [:berks_update, :style, :lint]
+task travis: [:style, :lint, :unit]
 
 task default: :test

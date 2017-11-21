@@ -12,7 +12,9 @@ describe 'pwnguin::davical' do
       runner = ChefSpec::ServerRunner.new
       runner.converge(described_recipe)
     end
-
+    before do
+      stub_command('/usr/sbin/apache2 -t').and_return(true)
+    end
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
