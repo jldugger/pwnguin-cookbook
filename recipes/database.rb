@@ -4,9 +4,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-#include_recipe 'postgresql::server'
-#include_recipe 'database::postgresql'
-
 postgresql_server_install 'postgresql' do
   port 5432
   action [:install, :create]
@@ -15,7 +12,6 @@ end
 node.default['postgresql']['config_pgtune']['db_type'] = 'web'
 
 memory = node['memory']['total'].split('kB')[0].to_i
-node.default['postgresql']['config_pgtune']['total_memory'] = (memory / 2).floor.to_s + 'kB'
 
 postgresql_user 'photologue'
 
@@ -40,8 +36,6 @@ databases = [
   { type: 'local', db: 'photologue', user: 'photologue', addr: nil, method: 'trust' },
   { type: 'local', db: 'gnucash', user: 'jldugger', addr: nil, method: 'md5' }
 ]
-
-#node.default['postgresql']['pg_hba'] = databases + node.default['postgresql']['pg_hba']
 
 directory '/var/backups/postgresql' do
   owner 'postgres'
