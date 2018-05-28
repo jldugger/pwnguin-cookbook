@@ -4,84 +4,34 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-include_recipe 'postgresql::server'
-include_recipe 'database::postgresql'
+#include_recipe 'postgresql::server'
+#include_recipe 'database::postgresql'
+
+postgresql_server_install 'postgresql' do
+  port 5432
+  action [:install, :create]
+end
 
 node.default['postgresql']['config_pgtune']['db_type'] = 'web'
 
 memory = node['memory']['total'].split('kB')[0].to_i
 node.default['postgresql']['config_pgtune']['total_memory'] = (memory / 2).floor.to_s + 'kB'
 
-postgresql_connection_info = {
-  host: 'localhost',
-  port: node['postgresql']['config']['port'],
-  username: 'postgres',
-  password: node['postgresql']['password']['postgres']
-}
-
-postgresql_database_user 'photologue' do
-  connection postgresql_connection_info
-end
+postgresql_user 'photologue'
 
 postgresql_database 'photologue' do
-  connection postgresql_connection_info
   owner 'photologue'
 end
 
-postgresql_database_user 'photologue' do
-  connection postgresql_connection_info
-  password 'password'
-  database_name 'photologue'
-  schema_name 'public'
-  tables [:all]
-  sequences [:all]
-  functions [:all]
-  privileges [:all]
-  action %i[grant grant_schema grant_table grant_sequence grant_function]
-end
-
-postgresql_database_user 'jldugger' do
-  connection postgresql_connection_info
-end
+postgresql_user 'jldugger'
 
 postgresql_database 'gnucash' do
-  connection postgresql_connection_info
   owner 'jldugger'
 end
 
-postgresql_database_user 'jldugger' do
-  connection postgresql_connection_info
-  database_name 'gnucash'
-  schema_name 'public'
-  tables [:all]
-  sequences [:all]
-  functions [:all]
-  privileges [:all]
-  action %i[grant grant_schema grant_table grant_sequence grant_function]
-end
-
-postgresql_database_user 'davical_app' do
-  connection postgresql_connection_info
-end
+postgresql_user 'davical_app'
 
 postgresql_database 'davical' do
-  connection postgresql_connection_info
-  owner 'davical_app'
-end
-
-postgresql_database_user 'davical_app' do
-  connection postgresql_connection_info
-  database_name 'davical'
-  schema_name 'public'
-  tables [:all]
-  sequences [:all]
-  functions [:all]
-  privileges [:all]
-  action %i[grant grant_schema grant_table grant_sequence grant_function]
-end
-
-postgresql_database 'davical' do
-  connection postgresql_connection_info
   owner 'davical_app'
 end
 
@@ -91,7 +41,7 @@ databases = [
   { type: 'local', db: 'gnucash', user: 'jldugger', addr: nil, method: 'md5' }
 ]
 
-node.default['postgresql']['pg_hba'] = databases + node.default['postgresql']['pg_hba']
+#node.default['postgresql']['pg_hba'] = databases + node.default['postgresql']['pg_hba']
 
 directory '/var/backups/postgresql' do
   owner 'postgres'
