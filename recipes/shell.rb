@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-%w[screen git ack-grep colordiff sshguard moreutils
+%w[tmux git ack-grep colordiff sshguard moreutils
    myrepos pastebinit pwgen pv vim].each do |pkg|
   package pkg do
     action :upgrade
@@ -24,7 +24,7 @@ user 'jldugger' do
 end
 
 cron 'irc' do
-  command '/usr/bin/screen -dmS IRC /usr/bin/weechat'
+  command '/usr/bin/tmux new -s IRC /usr/bin/weechat'
   time :reboot
   home '/home/jldugger'
   user 'jldugger'
