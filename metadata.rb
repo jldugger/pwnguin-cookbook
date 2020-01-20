@@ -4,9 +4,9 @@ maintainer_email 'jldugger@gmail.com'
 license 'GPL-2.0'
 description 'Installs/Configures pwnguin.net'
 long_description 'Installs/Configures pwnguin.net'
-version '1.4.3'
+version '1.5.3'
 
-chef_version '>= 12.5' if respond_to?(:chef_version)
+chef_version '>= 14.0' if respond_to?(:chef_version)
 supports 'ubuntu'
 
 issues_url 'https://github.com/jldugger/pwnguin/issues' if respond_to?(:issues_url)
@@ -19,7 +19,6 @@ depends 'postgresql'
 depends 'database'
 depends 'application_python'
 depends 'application_git'
-depends 'build-essential'
 depends 'logrotate'
 depends 'users'
 depends 'datadog'
