@@ -9,7 +9,7 @@ def run_command(command)
   if File.exist?('Gemfile.lock')
     sh %(bundle exec #{command})
   else
-    sh %(chef exec #{command})
+    sh %(CHEF_LICENSE="accept" chef exec #{command})
   end
 end
 
