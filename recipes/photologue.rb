@@ -5,7 +5,8 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 include_recipe 'apache2'
-include_recipe 'build-essential'
+
+build_essential 'install build tools'
 
 package 'python-virtualenv'
 package 'python-psycopg2'
