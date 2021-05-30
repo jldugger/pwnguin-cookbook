@@ -4,7 +4,7 @@ maintainer_email 'jldugger@gmail.com'
 license 'GPL-2.0'
 description 'Installs/Configures pwnguin.net'
 long_description 'Installs/Configures pwnguin.net'
-version '1.6.2'
+version '1.6.3'
 
 chef_version '>= 14.0' if respond_to?(:chef_version)
 supports 'ubuntu'
